@@ -1,0 +1,3 @@
+[submodule "src/OpenMacroBoard.SDK"]
+	path = src/OpenMacroBoard.SDK
+	url = https://github.com/OpenMacroBoard/OpenMacroBoard.SDK.git
