@@ -1,3 +1,12 @@
 [submodule "src/OpenMacroBoard.SDK"]
 	path = src/OpenMacroBoard.SDK
 	url = https://github.com/OpenMacroBoard/OpenMacroBoard.SDK.git
+	branch = master
+[submodule "src/OpenMacroBoard.ExampleCollection"]
+	path = src/OpenMacroBoard.ExampleCollection
+	url = https://github.com/OpenMacroBoard/OpenMacroBoard.ExampleCollection.git
+	branch = master
+[submodule "src/StreamDeckSharp"]
+	path = src/StreamDeckSharp
+	url = https://github.com/OpenMacroBoard/StreamDeckSharp.git
+	branch = master
