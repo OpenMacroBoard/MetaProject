@@ -2,7 +2,7 @@
 
 static class AbsolutePathExtension
 {
-    public static string Quoted(this AbsolutePath path)
+    public static string ShellEscape(this AbsolutePath path)
     {
         return $"\"{path}\"";
     }

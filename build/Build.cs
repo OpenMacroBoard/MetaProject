@@ -53,6 +53,17 @@ class Build : NukeBuild
             EnsureCleanDirectory(OutputDirectory);
         });
 
+    Target Bleach => _ => _
+        .Before(Clean)
+        .Before(Restore)
+        .Executes(() =>
+        {
+            RunCodeInRoot("git", "clean -xdf -e /build/bin/ -e /.tmp/build-attempt.log");
+            RunCodeInRoot("git", "reset --hard");
+            RunCodeInRoot("git", "submodule foreach --recursive \"git clean -xdf\"");
+            RunCodeInRoot("git", "submodule foreach --recursive \"git reset --hard\"");
+        });
+
     Target Restore => _ => _
         .Executes(() =>
         {
@@ -90,7 +101,7 @@ class Build : NukeBuild
             var hidLibrary = streamDeckSharpOutput / "HidLibrary.dll";
 
             EnsureCleanDirectory(merged);
-            var args = $"/out:{outDll.Quoted()} /xmldocs /internalize {streamDeckDll.Quoted()} {hidLibrary.Quoted()}";
+            var args = $"/out:{outDll.ShellEscape()} /xmldocs /internalize {streamDeckDll.ShellEscape()} {hidLibrary.ShellEscape()}";
 
             var proc = ProcessTasks.StartProcess(ILRepackBin,
                 workingDirectory: streamDeckSharpOutput,
@@ -115,4 +126,15 @@ class Build : NukeBuild
                 .SetOutputDirectory(OutputDirectory)
             );
         });
+
+    private void RunCodeInRoot(string toolPath, string arguments)
+    {
+        var proc = ProcessTasks.StartProcess(toolPath,
+                workingDirectory: RootDirectory,
+                arguments: arguments
+            );
+
+        proc.WaitForExit();
+        proc.AssertZeroExitCode();
+    }
 }
