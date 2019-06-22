@@ -43,12 +43,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMacroBoard.Examples.Aus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMacroBoard.Examples.MeasureSetBitmapSpeed", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Example.MeasureSetBitmapSpeed\OpenMacroBoard.Examples.MeasureSetBitmapSpeed.csproj", "{C772FD1B-96FE-46EF-B5E9-0F51050CF910}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{B1CF6653-EA7E-4FAF-A123-DA4D7595B4D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1CF6653-EA7E-4FAF-A123-DA4D7595B4D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CF6653-EA7E-4FAF-A123-DA4D7595B4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BDFC513-16B4-47ED-B230-ED06E7028455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4BDFC513-16B4-47ED-B230-ED06E7028455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BDFC513-16B4-47ED-B230-ED06E7028455}.Release|Any CPU.ActiveCfg = Release|Any CPU
