@@ -93,39 +93,24 @@ class Build : NukeBuild
         .Requires(() => Configuration == Configuration.Release)
         .Executes(() =>
         {
-            var streamDeckSharpOutput = StreamDeckSharpProject.Directory / "bin" / Configuration;
-            var merged = streamDeckSharpOutput / "Merged";
-            var outDll = merged / "StreamDeckSharp.dll";
+            //Compile also packs, we only need to copy the packages to the output location
 
-            var streamDeckDll = streamDeckSharpOutput / "StreamDeckSharp.dll";
-            var hidLibrary = streamDeckSharpOutput / "HidLibrary.dll";
+            var projectDirs = new[]
+            {
+                VirtualBoardProject.Directory,
+                StreamDeckSharpProject.Directory,
+                OpenMacroBoardSDKProject.Directory
+            };
 
-            EnsureCleanDirectory(merged);
-            var args = $"/out:{outDll.ShellEscape()} /xmldocs /internalize {streamDeckDll.ShellEscape()} {hidLibrary.ShellEscape()}";
-
-            var proc = ProcessTasks.StartProcess(ILRepackBin,
-                workingDirectory: streamDeckSharpOutput,
-                arguments: args
-            );
-
-            proc.WaitForExit();
-            proc.AssertZeroExitCode();
-
-            NuGetPack(s => s
-                .SetTargetPath(Path.ChangeExtension(VirtualBoardProject.Path, "nuspec"))
-                .SetOutputDirectory(OutputDirectory)
-            );
-
-            NuGetPack(s => s
-                .SetTargetPath(Path.ChangeExtension(OpenMacroBoardSDKProject.Path, "nuspec"))
-                .SetOutputDirectory(OutputDirectory)
-            );
-
-            NuGetPack(s => s
-                .SetTargetPath(Path.ChangeExtension(StreamDeckSharpProject.Path, "nuspec"))
-                .SetOutputDirectory(OutputDirectory)
-            );
+            foreach (var projectDir in projectDirs)
+                MoveNugetPackagesToOutput(projectDir / "bin" / Configuration);
         });
+
+    private void MoveNugetPackagesToOutput(string directory)
+    {
+        foreach (var file in GlobFiles(directory, "*.nupkg"))
+            CopyFile(file, OutputDirectory / Path.GetFileName(file));
+    }
 
     private void RunCodeInRoot(string toolPath, string arguments)
     {
