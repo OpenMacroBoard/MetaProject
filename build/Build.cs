@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 using Nuke.Common;
 using Nuke.Common.Execution;
 using Nuke.Common.Git;
@@ -9,7 +10,6 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.MSBuild;
 using Nuke.Common.Tools.NuGet;
 using Nuke.Common.Utilities.Collections;
-using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
@@ -24,8 +24,8 @@ class Build : NukeBuild
     [Parameter("Configuration to build - Default is 'Release'")]
     readonly Configuration Configuration = Configuration.Release;
 
-    [Solution] readonly Solution Solution;
-    [GitRepository] readonly GitRepository GitRepository;
+    [Solution]
+    readonly Solution Solution;
 
     AbsolutePath SourceDirectory
         => RootDirectory / "src";
@@ -33,17 +33,12 @@ class Build : NukeBuild
     AbsolutePath OutputDirectory
         => RootDirectory / "output";
 
-    AbsolutePath ILRepackBin
-        => (AbsolutePath)ToolPathResolver.GetPackageExecutable("ilrepack", "ILRepack.exe");
-
-    Project VirtualBoardProject
-        => Solution.GetProject("OpenMacroBoard.VirtualBoard");
-
-    Project OpenMacroBoardSDKProject
-        => Solution.GetProject("OpenMacroBoard.SDK");
-
-    Project StreamDeckSharpProject
-        => Solution.GetProject("StreamDeckSharp");
+    readonly string[] ProjectsNames = new string[]
+    {
+        "StreamDeckSharp",
+        "OpenMacroBoard.SDK",
+        "OpenMacroBoard.VirtualBoard"
+    };
 
     Target Clean => _ => _
         .Before(Restore)
@@ -80,12 +75,22 @@ class Build : NukeBuild
         .DependsOn(Restore)
         .Executes(() =>
         {
-            MSBuild(s => s
-                .SetTargetPath(Solution)
-                .SetTargets("Rebuild")
-                .SetConfiguration(Configuration)
-                .SetMaxCpuCount(Environment.ProcessorCount)
-                .SetNodeReuse(IsLocalBuild));
+            foreach (var projectName in ProjectsNames)
+            {
+                var project = Solution.GetProject(projectName);
+                var version = GetVersion(project);
+
+                MSBuild(s => s
+                    .SetTargetPath(project)
+                    .SetTargets("Rebuild")
+                    .SetFileVersion(version)
+                    .SetAssemblyVersion(version)
+                    .SetInformationalVersion(version)
+                    .SetConfiguration(Configuration)
+                    .SetMaxCpuCount(Environment.ProcessorCount)
+                    .SetNodeReuse(IsLocalBuild)
+                );
+            }
         });
 
     Target Pack => _ => _
@@ -93,23 +98,33 @@ class Build : NukeBuild
         .Requires(() => Configuration == Configuration.Release)
         .Executes(() =>
         {
-            //Compile also packs, we only need to copy the packages to the output location
-
-            var projectDirs = new[]
+            foreach (var projectName in ProjectsNames)
             {
-                VirtualBoardProject.Directory,
-                StreamDeckSharpProject.Directory,
-                OpenMacroBoardSDKProject.Directory
-            };
+                var project = Solution.GetProject(projectName);
+                var version = GetVersion(project);
+                var nuspecFile = Path.ChangeExtension(project, ".nuspec");
 
-            foreach (var projectDir in projectDirs)
-                MoveNugetPackagesToOutput(projectDir / "bin" / Configuration);
+                NuGetPack(s => s
+                    .SetTargetPath(nuspecFile)
+                    .SetVersion(version)
+                    .SetConfiguration(Configuration)
+                    .SetOutputDirectory(OutputDirectory)
+                );
+            }
         });
 
-    private void MoveNugetPackagesToOutput(string directory)
+    private string GetVersion(string project)
     {
-        foreach (var file in GlobFiles(directory, "*.nupkg"))
-            CopyFile(file, OutputDirectory / Path.GetFileName(file));
+        return XDocument
+            .Load(project)
+            .Descendants()
+            .Where(d => d.Name.LocalName == "PropertyGroup")
+            .SelectMany(d => d
+                .Descendants()
+                .Where(x => x.Name.LocalName == "Version")
+            )
+            .FirstOrDefault()
+            ?.Value;
     }
 
     private void RunCodeInRoot(string toolPath, string arguments)
