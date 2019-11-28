@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -17,6 +18,7 @@ using static Nuke.Common.Tools.NuGet.NuGetTasks;
 
 [CheckBuildProjectConfigurations]
 [UnsetVisualStudioEnvironmentVariables]
+[SuppressMessage("Code Quality", "IDE0051:Remove unused private members", Justification = "It's OK for build scripts")]
 class Build : NukeBuild
 {
     public static int Main() => Execute<Build>(x => x.Compile);
