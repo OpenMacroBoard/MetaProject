@@ -31,15 +31,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.Austria", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.Austria\OpenMacroBoard.Examples.Austria.csproj", "{FC69188A-307D-4029-AA51-4F099E7AB00B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.MeasureSetBitmapSpeed", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Example.MeasureSetBitmapSpeed\OpenMacroBoard.Examples.MeasureSetBitmapSpeed.csproj", "{C772FD1B-96FE-46EF-B5E9-0F51050CF910}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{B1CF6653-EA7E-4FAF-A123-DA4D7595B4D6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.SDK", "OpenMacroBoard.SDK\src\OpenMacroBoard.SDK\OpenMacroBoard.SDK.csproj", "{E3F6346A-E7D9-4DCB-9F62-0E781DFF2927}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamDeckSharp", "StreamDeckSharp\src\StreamDeckSharp\StreamDeckSharp.csproj", "{C42A8415-5084-4842-AC1A-004927D96EAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMacroBoard.Tests", "OpenMacroBoard.SDK\src\OpenMacroBoard.Tests\OpenMacroBoard.Tests.csproj", "{AB9DFDFD-6EE5-4F26-840B-450883E07DE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Tests", "OpenMacroBoard.SDK\src\OpenMacroBoard.Tests\OpenMacroBoard.Tests.csproj", "{AB9DFDFD-6EE5-4F26-840B-450883E07DE6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.Minesweeper", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.Minesweeper\OpenMacroBoard.Examples.Minesweeper.csproj", "{0968AF48-9086-4DD4-A9FC-12A850B2B41C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.MeasureSetBitmapSpeed", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.MeasureSetBitmapSpeed\OpenMacroBoard.Examples.MeasureSetBitmapSpeed.csproj", "{E34C5432-A548-49BA-978B-B654BB3D982B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,10 +93,6 @@ Global
 		{FC69188A-307D-4029-AA51-4F099E7AB00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC69188A-307D-4029-AA51-4F099E7AB00B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC69188A-307D-4029-AA51-4F099E7AB00B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C772FD1B-96FE-46EF-B5E9-0F51050CF910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C772FD1B-96FE-46EF-B5E9-0F51050CF910}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C772FD1B-96FE-46EF-B5E9-0F51050CF910}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C772FD1B-96FE-46EF-B5E9-0F51050CF910}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1CF6653-EA7E-4FAF-A123-DA4D7595B4D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1CF6653-EA7E-4FAF-A123-DA4D7595B4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3F6346A-E7D9-4DCB-9F62-0E781DFF2927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -109,6 +107,14 @@ Global
 		{AB9DFDFD-6EE5-4F26-840B-450883E07DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB9DFDFD-6EE5-4F26-840B-450883E07DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB9DFDFD-6EE5-4F26-840B-450883E07DE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0968AF48-9086-4DD4-A9FC-12A850B2B41C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0968AF48-9086-4DD4-A9FC-12A850B2B41C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0968AF48-9086-4DD4-A9FC-12A850B2B41C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0968AF48-9086-4DD4-A9FC-12A850B2B41C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E34C5432-A548-49BA-978B-B654BB3D982B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E34C5432-A548-49BA-978B-B654BB3D982B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E34C5432-A548-49BA-978B-B654BB3D982B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E34C5432-A548-49BA-978B-B654BB3D982B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,10 +131,11 @@ Global
 		{1053A6D8-353E-4848-9434-5A35F32E9180} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{26FD41D1-A64D-48F7-9E37-9A114D3DC503} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{FC69188A-307D-4029-AA51-4F099E7AB00B} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
-		{C772FD1B-96FE-46EF-B5E9-0F51050CF910} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{E3F6346A-E7D9-4DCB-9F62-0E781DFF2927} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
 		{C42A8415-5084-4842-AC1A-004927D96EAB} = {89CE4817-58F7-46FF-8098-233671054E78}
 		{AB9DFDFD-6EE5-4F26-840B-450883E07DE6} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
+		{0968AF48-9086-4DD4-A9FC-12A850B2B41C} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
+		{E34C5432-A548-49BA-978B-B654BB3D982B} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EDCF284-B355-487C-810B-97E751930463}
