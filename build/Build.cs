@@ -79,14 +79,10 @@ class Build : NukeBuild
             foreach (var projectName in ProjectsNames)
             {
                 var project = Solution.GetProject(projectName);
-                var version = GetVersion(project);
 
                 MSBuild(s => s
                     .SetTargetPath(project)
                     .SetTargets("Rebuild")
-                    .SetFileVersion(version)
-                    .SetAssemblyVersion(version)
-                    .SetInformationalVersion(version)
                     .SetConfiguration(Configuration)
                     .SetMaxCpuCount(Environment.ProcessorCount)
                     .SetNodeReuse(IsLocalBuild)
