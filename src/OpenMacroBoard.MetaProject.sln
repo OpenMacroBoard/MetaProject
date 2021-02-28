@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.VirtualBoard", "OpenMacroBoard.SDK\src\OpenMacroBoard.VirtualBoard\OpenMacroBoard.VirtualBoard.csproj", "{15125B47-6DF9-4D4F-AD98-3603EFE741E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDeckSharp.Tests", "StreamDeckSharp\src\StreamDeckSharp.Tests\StreamDeckSharp.Tests.csproj", "{5154E62F-25B3-4064-8340-E7DEB84BD7A7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StreamDeckSharp", "StreamDeckSharp", "{89CE4817-58F7-46FF-8098-233671054E78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenMacroBoard", "OpenMacroBoard", "{567FC8FC-DEC9-474F-9F16-49271075AF01}"
@@ -43,6 +41,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.Min
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.MeasureSetBitmapSpeed", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.MeasureSetBitmapSpeed\OpenMacroBoard.Examples.MeasureSetBitmapSpeed.csproj", "{E34C5432-A548-49BA-978B-B654BB3D982B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamDeckSharp.Tests", "StreamDeckSharp\src\StreamDeckSharp.Tests\StreamDeckSharp.Tests.csproj", "{55D488B2-7E3D-4180-8537-A5372A6EE5E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HidSharp.NETStandard", "StreamDeckSharp\src\HidSharp\HidSharp\HidSharp.NETStandard.csproj", "{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMacroBoard.Examples.ButtonPressDiagnostics", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.ButtonPressDiagnostics\OpenMacroBoard.Examples.ButtonPressDiagnostics.csproj", "{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,10 +57,6 @@ Global
 		{15125B47-6DF9-4D4F-AD98-3603EFE741E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15125B47-6DF9-4D4F-AD98-3603EFE741E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15125B47-6DF9-4D4F-AD98-3603EFE741E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5154E62F-25B3-4064-8340-E7DEB84BD7A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5154E62F-25B3-4064-8340-E7DEB84BD7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5154E62F-25B3-4064-8340-E7DEB84BD7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5154E62F-25B3-4064-8340-E7DEB84BD7A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E775A0D6-894E-47A1-A0F9-095C0319312D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E775A0D6-894E-47A1-A0F9-095C0319312D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E775A0D6-894E-47A1-A0F9-095C0319312D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -115,13 +115,24 @@ Global
 		{E34C5432-A548-49BA-978B-B654BB3D982B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E34C5432-A548-49BA-978B-B654BB3D982B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E34C5432-A548-49BA-978B-B654BB3D982B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55D488B2-7E3D-4180-8537-A5372A6EE5E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D488B2-7E3D-4180-8537-A5372A6EE5E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D488B2-7E3D-4180-8537-A5372A6EE5E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D488B2-7E3D-4180-8537-A5372A6EE5E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{15125B47-6DF9-4D4F-AD98-3603EFE741E6} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
-		{5154E62F-25B3-4064-8340-E7DEB84BD7A7} = {89CE4817-58F7-46FF-8098-233671054E78}
 		{E775A0D6-894E-47A1-A0F9-095C0319312D} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{AA895BB3-EB57-4C20-8BA9-0AB0B09FF08E} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{E47522DE-19FA-40E8-8DAF-786C69BF42B3} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
@@ -136,6 +147,9 @@ Global
 		{AB9DFDFD-6EE5-4F26-840B-450883E07DE6} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
 		{0968AF48-9086-4DD4-A9FC-12A850B2B41C} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{E34C5432-A548-49BA-978B-B654BB3D982B} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
+		{55D488B2-7E3D-4180-8537-A5372A6EE5E1} = {89CE4817-58F7-46FF-8098-233671054E78}
+		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1} = {89CE4817-58F7-46FF-8098-233671054E78}
+		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EDCF284-B355-487C-810B-97E751930463}
