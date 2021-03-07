@@ -41,6 +41,12 @@ class Build : NukeBuild
         "OpenMacroBoard.VirtualBoard"
     };
 
+    Target UpdateDocs => _ => _
+        .Executes(() =>
+        {
+            CodeSampleUpdater.Run(RootDirectory / "README.md");
+        });
+
     Target Clean => _ => _
         .Before(Restore)
         .Executes(() =>
