@@ -45,7 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamDeckSharp.Tests", "St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HidSharp.NETStandard", "StreamDeckSharp\src\HidSharp\HidSharp\HidSharp.NETStandard.csproj", "{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMacroBoard.Examples.ButtonPressDiagnostics", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.ButtonPressDiagnostics\OpenMacroBoard.Examples.ButtonPressDiagnostics.csproj", "{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.ButtonPressDiagnostics", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.ButtonPressDiagnostics\OpenMacroBoard.Examples.ButtonPressDiagnostics.csproj", "{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.XorFlip", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.XorFlip\OpenMacroBoard.Examples.XorFlip.csproj", "{1C0AC15B-7F17-4593-92EB-E640500C84F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -127,6 +129,10 @@ Global
 		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C0AC15B-7F17-4593-92EB-E640500C84F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0AC15B-7F17-4593-92EB-E640500C84F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0AC15B-7F17-4593-92EB-E640500C84F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0AC15B-7F17-4593-92EB-E640500C84F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +156,7 @@ Global
 		{55D488B2-7E3D-4180-8537-A5372A6EE5E1} = {89CE4817-58F7-46FF-8098-233671054E78}
 		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1} = {89CE4817-58F7-46FF-8098-233671054E78}
 		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
+		{1C0AC15B-7F17-4593-92EB-E640500C84F6} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EDCF284-B355-487C-810B-97E751930463}
