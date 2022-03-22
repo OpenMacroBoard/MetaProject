@@ -1,0 +1,193 @@
+﻿
+# All files
+[*]
+indent_style = space
+
+# XML project files
+[*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj,targets}]
+indent_style = space
+indent_size = 2
+
+# Code files
+[*.{cs,csx,vb,vbx}]
+indent_size = 4
+insert_final_newline = true
+charset = utf-8
+
+[*.cs]
+# Enable all rules as warning per default
+dotnet_analyzer_diagnostic.severity = warning
+
+# == IDE ==
+
+# IDE0005: Using directive is unnecessary.
+dotnet_diagnostic.IDE0005.severity = warning
+
+# IDE0008: Use explicit type
+dotnet_diagnostic.IDE0008.severity = none
+
+# IDE0010: Add missing cases
+dotnet_diagnostic.IDE0010.severity = none
+
+# IDE0130: Namespace does not match expected folder structure
+dotnet_diagnostic.IDE0130.severity = none
+
+# IDE0046: Convert to conditional expression
+dotnet_diagnostic.IDE0046.severity = none
+
+# IDE0048: Add parentheses for clarity
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:none
+
+# IDE0048: Add parentheses for clarity
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:none
+
+# IDE0048: Add parentheses for clarity
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary:none
+
+# IDE0048: Add parentheses for clarity
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:none
+
+# IDE0058: Expression value is never used
+csharp_style_unused_value_expression_statement_preference = discard_variable:none
+
+# IDE0060: Remove unused parameter
+dotnet_code_quality_unused_parameters = all:none
+
+
+
+
+
+# == CA ==
+
+# CA1000: Do not declare static members on generic types
+dotnet_diagnostic.CA1000.severity = none
+
+# CA1040: Avoid empty interfaces
+dotnet_diagnostic.CA1040.severity = none
+
+# CA1303: Do not pass literals as localized parameters
+dotnet_diagnostic.CA1303.severity = none
+
+# CA1805: Do not initialize unnecessarily
+dotnet_diagnostic.CA1805.severity = none
+
+# CA1822: Mark members as static
+dotnet_diagnostic.CA1822.severity = none
+
+# CA2229: Implement serialization constructors
+dotnet_diagnostic.CA2229.severity = none
+
+
+
+
+
+
+# == SA ==
+
+# SA1006: Preprocessor keywords should not be preceded by space
+dotnet_diagnostic.SA1006.severity = none
+
+# SA1101: Prefix local calls with this
+dotnet_diagnostic.SA1101.severity = none
+
+# SA1516: Elements should be separated by blank line
+dotnet_diagnostic.SA1516.severity = none
+
+# SA1600: Elements should be documented
+dotnet_diagnostic.SA1600.severity = none
+
+# SA1611: Element parameters should be documented
+dotnet_diagnostic.SA1611.severity = none
+
+# SA1614: Element parameter documentation should have text
+dotnet_diagnostic.SA1614.severity = none
+
+# SA1615: Element return value should be documented
+dotnet_diagnostic.SA1615.severity = none
+
+# SA1616: Element return value documentation should have text
+dotnet_diagnostic.SA1616.severity = none
+
+# SA1623: Property summary documentation should match accessors
+dotnet_diagnostic.SA1623.severity = none
+
+# SA1629: Documentation text should end with a period
+dotnet_diagnostic.SA1629.severity = none
+
+# SA1633: File should have header
+dotnet_diagnostic.SA1633.severity = none
+
+# SA1005: Single line comments should begin with single space
+dotnet_diagnostic.SA1005.severity = warning
+
+# SA1028: Code should not contain trailing whitespace
+dotnet_diagnostic.SA1028.severity = warning
+
+# SA1208: System using directives should be placed before other using directives
+dotnet_diagnostic.SA1208.severity = none
+
+# SA1200: Using directives should be placed correctly
+dotnet_diagnostic.SA1200.severity = none
+
+# SA1116: Split parameters should start on line after declaration
+dotnet_diagnostic.SA1116.severity = none
+
+# SA1407: Arithmetic expressions should declare precedence
+dotnet_diagnostic.SA1407.severity = none
+
+# SA1648: inheritdoc should be used with inheriting class
+dotnet_diagnostic.SA1648.severity = none
+
+# SA1009: Closing parenthesis should be spaced correctly
+dotnet_diagnostic.SA1009.severity = none
+
+# SA1111: Closing parenthesis should be on line of last parameter
+dotnet_diagnostic.SA1111.severity = none
+
+# SA1512: Single-line comments should not be followed by blank line
+dotnet_diagnostic.SA1512.severity = none
+
+# SA1602: Enumeration items should be documented
+dotnet_diagnostic.SA1602.severity = none
+
+# S2368: Public methods should not have multidimensional array parameters
+dotnet_diagnostic.S2368.severity = none
+
+
+
+
+
+
+# == RCS ==
+
+# RCS1123: Add parentheses when necessary.
+dotnet_diagnostic.RCS1123.severity = none
+
+# RCS1129: Remove redundant field initialization.
+dotnet_diagnostic.RCS1129.severity = none
+
+# RCS1141: Add 'param' element to documentation comment.
+dotnet_diagnostic.RCS1141.severity = none
+
+# RCS1158: Static member in generic type should use a type parameter.
+dotnet_diagnostic.RCS1158.severity = none
+
+# RCS1161: Enum should declare explicit values.
+dotnet_diagnostic.RCS1161.severity = none
+
+# RCS1163: Unused parameter.
+dotnet_diagnostic.RCS1163.severity = none
+
+# RCS1175: Unused this parameter.
+dotnet_diagnostic.RCS1175.severity = none
+
+# RCS1187: Use constant instead of field.
+dotnet_diagnostic.RCS1187.severity = none
+
+# RCS1224: Make method an extension method.
+dotnet_diagnostic.RCS1224.severity = none
+
+# == SCS ==
+
+# SCS0005: Weak random number generator.
+dotnet_diagnostic.SCS0005.severity = none

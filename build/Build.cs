@@ -20,7 +20,10 @@ using static Nuke.Common.Tools.NuGet.NuGetTasks;
 [SuppressMessage("Code Quality", "IDE0051:Remove unused private members", Justification = "It's OK for build scripts")]
 class Build : NukeBuild
 {
-    public static int Main() => Execute<Build>(x => x.Compile);
+    public static int Main()
+    {
+        return Execute<Build>(x => x.Compile);
+    }
 
     [Parameter("Configuration to build - Default is 'Release'")]
     readonly Configuration Configuration = Configuration.Release;

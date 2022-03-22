@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29009.5
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.VirtualBoard", "OpenMacroBoard.SDK\src\OpenMacroBoard.VirtualBoard\OpenMacroBoard.VirtualBoard.csproj", "{15125B47-6DF9-4D4F-AD98-3603EFE741E6}"
 EndProject
@@ -43,13 +43,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.Mea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamDeckSharp.Tests", "StreamDeckSharp\src\StreamDeckSharp.Tests\StreamDeckSharp.Tests.csproj", "{55D488B2-7E3D-4180-8537-A5372A6EE5E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HidSharp.NETStandard", "StreamDeckSharp\src\HidSharp\HidSharp\HidSharp.NETStandard.csproj", "{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.ButtonPressDiagnostics", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.ButtonPressDiagnostics\OpenMacroBoard.Examples.ButtonPressDiagnostics.csproj", "{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.XorFlip", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.XorFlip\OpenMacroBoard.Examples.XorFlip.csproj", "{1C0AC15B-7F17-4593-92EB-E640500C84F6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.GapMeasureTool", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.GapMeasureTool\OpenMacroBoard.Examples.GapMeasureTool.csproj", "{8149FF4F-9954-4925-B913-082132FDF50C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Meta.TestUtils", "OpenMacroBoard.Meta.TestUtils\OpenMacroBoard.Meta.TestUtils.csproj", "{9FB743C3-279C-4E79-AC61-4878C2DE3D11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.DeviceContextShowcase", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.DeviceContextShowcase\OpenMacroBoard.Examples.DeviceContextShowcase.csproj", "{0926A1A3-84BE-4256-8E72-6546EDCA8319}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.SocketIO", "OpenMacroBoard.SDK\src\OpenMacroBoard.SocketIO\OpenMacroBoard.SocketIO.csproj", "{684B5CAE-C4F9-4492-9C15-3A91DEAD0535}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,10 +127,6 @@ Global
 		{55D488B2-7E3D-4180-8537-A5372A6EE5E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55D488B2-7E3D-4180-8537-A5372A6EE5E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55D488B2-7E3D-4180-8537-A5372A6EE5E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -139,6 +139,18 @@ Global
 		{8149FF4F-9954-4925-B913-082132FDF50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8149FF4F-9954-4925-B913-082132FDF50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8149FF4F-9954-4925-B913-082132FDF50C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FB743C3-279C-4E79-AC61-4878C2DE3D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB743C3-279C-4E79-AC61-4878C2DE3D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FB743C3-279C-4E79-AC61-4878C2DE3D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB743C3-279C-4E79-AC61-4878C2DE3D11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0926A1A3-84BE-4256-8E72-6546EDCA8319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0926A1A3-84BE-4256-8E72-6546EDCA8319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0926A1A3-84BE-4256-8E72-6546EDCA8319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0926A1A3-84BE-4256-8E72-6546EDCA8319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,10 +172,11 @@ Global
 		{0968AF48-9086-4DD4-A9FC-12A850B2B41C} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{E34C5432-A548-49BA-978B-B654BB3D982B} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{55D488B2-7E3D-4180-8537-A5372A6EE5E1} = {89CE4817-58F7-46FF-8098-233671054E78}
-		{D5625397-C0C2-475E-8C4A-C9E8B7E0A7D1} = {89CE4817-58F7-46FF-8098-233671054E78}
 		{9CACA2A6-1984-4C7D-AB4A-B95DA1109073} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{1C0AC15B-7F17-4593-92EB-E640500C84F6} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{8149FF4F-9954-4925-B913-082132FDF50C} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
+		{0926A1A3-84BE-4256-8E72-6546EDCA8319} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
+		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EDCF284-B355-487C-810B-97E751930463}
