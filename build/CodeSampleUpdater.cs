@@ -19,7 +19,7 @@ using static Nuke.Common.IO.PathConstruction;
 /// The sample updater works by giving it a markdown file (which contains region markers) and copies the referenced
 /// example code into the markdown file. The referenced source also contains region markers.
 /// 
-/// Additionally we remove unecessary indentation to make it more readable.
+/// Additionally we remove unnecessary indentation to make it more readable.
 /// 
 /// The file references inside the markdown file are relative to the markdown file itself.
 /// </remarks>
