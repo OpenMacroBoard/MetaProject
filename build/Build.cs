@@ -1,19 +1,20 @@
 using Nuke.Common;
+using Nuke.Common.IO;
 using Nuke.Common.Execution;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.MSBuild;
 using Nuke.Common.Tools.NuGet;
+using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities.Collections;
-using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
-using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
-using static Nuke.Common.Tools.NuGet.NuGetTasks;
+using static Nuke.Common.Tools.DotNet.DotNetTasks;
+using System.IO;
 
 [CheckBuildProjectConfigurations]
 [UnsetVisualStudioEnvironmentVariables]
@@ -22,7 +23,7 @@ class Build : NukeBuild
 {
     public static int Main()
     {
-        return Execute<Build>(x => x.Compile);
+        return Execute<Build>(x => x.Pack);
     }
 
     [Parameter("Configuration to build - Default is 'Release'")]
@@ -41,7 +42,7 @@ class Build : NukeBuild
     {
         "StreamDeckSharp",
         "OpenMacroBoard.SDK",
-        "OpenMacroBoard.VirtualBoard"
+        "OpenMacroBoard.SocketIO"
     };
 
     Target UpdateDocs => _ => _
@@ -51,7 +52,6 @@ class Build : NukeBuild
         });
 
     Target Clean => _ => _
-        .Before(Restore)
         .Executes(() =>
         {
             SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
@@ -60,7 +60,6 @@ class Build : NukeBuild
 
     Target Bleach => _ => _
         .Before(Clean)
-        .Before(Restore)
         .Executes(() =>
         {
             RunCodeInRoot("git", "clean -xdf -e /build/bin/ -e /.tmp/build-attempt.log");
@@ -69,52 +68,29 @@ class Build : NukeBuild
             RunCodeInRoot("git", "submodule foreach --recursive \"git reset --hard\"");
         });
 
-    Target Restore => _ => _
-        .Executes(() =>
-        {
-            MSBuild(s => s
-                .SetTargetPath(Solution)
-                .SetTargets("Restore"));
-
-            NuGetRestore(new NuGetRestoreSettings()
-                .SetTargetPath(Solution)
-            );
-        });
-
-    Target Compile => _ => _
-        .DependsOn(Restore)
-        .Executes(() =>
-        {
-            foreach (var projectName in ProjectsNames)
-            {
-                var project = Solution.GetProject(projectName);
-
-                MSBuild(s => s
-                    .SetTargetPath(project)
-                    .SetTargets("Rebuild")
-                    .SetConfiguration(Configuration)
-                    .SetMaxCpuCount(Environment.ProcessorCount)
-                    .SetNodeReuse(IsLocalBuild)
-                );
-            }
-        });
-
     Target Pack => _ => _
-        .DependsOn(Compile)
         .Requires(() => Configuration == Configuration.Release)
         .Executes(() =>
         {
+            EnsureExistingDirectory(OutputDirectory);
+
             foreach (var projectName in ProjectsNames)
             {
                 var project = Solution.GetProject(projectName);
-                var version = GetVersion(project);
-                var nuspecFile = Path.ChangeExtension(project, ".nuspec");
 
-                NuGetPack(s => s
-                    .SetTargetPath(nuspecFile)
-                    .SetVersion(version)
+                DotNetPack(s => s
+                    .SetProject(project)
                     .SetConfiguration(Configuration)
-                    .SetOutputDirectory(OutputDirectory)
+                );
+
+                var binDir = project.Directory / "bin" / Configuration;
+                var nupkgFile = GlobFiles(binDir, "*.nupkg").Single();
+
+                MoveDirectoryToDirectory(
+                    nupkgFile,
+                    OutputDirectory,
+                    DirectoryExistsPolicy.Merge,
+                    FileExistsPolicy.Overwrite
                 );
             }
         });
