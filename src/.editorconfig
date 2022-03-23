@@ -90,6 +90,9 @@ dotnet_diagnostic.SA1006.severity = none
 # SA1101: Prefix local calls with this
 dotnet_diagnostic.SA1101.severity = none
 
+# SA1110: Opening parenthesis or bracket should be on declaration line
+dotnet_diagnostic.SA1110.severity = none
+
 # SA1516: Elements should be separated by blank line
 dotnet_diagnostic.SA1516.severity = none
 
