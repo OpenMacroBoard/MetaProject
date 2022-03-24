@@ -14,7 +14,7 @@ using System.Xml.Linq;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using System.IO;
+using System.IO.Compression;
 
 [CheckBuildProjectConfigurations]
 [UnsetVisualStudioEnvironmentVariables]
@@ -42,7 +42,7 @@ class Build : NukeBuild
     {
         "StreamDeckSharp",
         "OpenMacroBoard.SDK",
-        "OpenMacroBoard.SocketIO"
+        "OpenMacroBoard.SocketIO",
     };
 
     Target UpdateDocs => _ => _
@@ -70,6 +70,7 @@ class Build : NukeBuild
 
     Target Pack => _ => _
         .Requires(() => Configuration == Configuration.Release)
+        .After(Clean)
         .Executes(() =>
         {
             EnsureExistingDirectory(OutputDirectory);
@@ -93,6 +94,20 @@ class Build : NukeBuild
                     FileExistsPolicy.Overwrite
                 );
             }
+
+            var project2 = Solution.GetProject("OpenMacroBoard.VirtualBoard");
+
+            DotNetBuild(s => s
+                .SetProjectFile(project2)
+                .SetConfiguration(Configuration)
+            );
+
+            var releasePath = project2.Directory / "bin" / "Release" / "net6.0-windows";
+            GlobFiles(releasePath, "*.xml", "*.pdb", "*.deps.json").ForEach(DeleteFile);
+
+            RenameFile(releasePath / "OpenMacroBoard.VirtualBoard.exe", releasePath / "VirtualBoard.exe");
+
+            ZipFile.CreateFromDirectory(releasePath, OutputDirectory / "VirtualBoard.zip");
         });
 
     private string GetVersion(string project)
