@@ -1,10 +1,10 @@
 <Project>
 
   <PropertyGroup>
-    <Authors>Christian Wischenbart</Authors>
+    <Authors>Christian Franzl</Authors>
     <Configuration>Release</Configuration>
     <Company>bitOxide - Software Development e.U.</Company>
-    <Copyright>bitOxide 2018 - 2022</Copyright>
+    <Copyright>bitOxide 2018 - 2023</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://openmacroboard.github.io/</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
