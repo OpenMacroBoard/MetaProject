@@ -14,7 +14,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 #pragma warning disable S3903   // Types should be defined in named namespaces
 #pragma warning disable IDE0051 // Remove unused private members
 
-class Build : NukeBuild
+sealed class Build : NukeBuild
 {
     public static int Main()
     {

@@ -1,4 +1,4 @@
-﻿using Nuke.Common.IO;
+using Nuke.Common.IO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,13 +28,13 @@ using System.Text.RegularExpressions;
 /// The file references inside the markdown file are relative to the markdown file itself.
 /// </para>
 /// </remarks>
-internal class CodeSampleUpdater
+internal sealed partial class CodeSampleUpdater
 {
     readonly AbsolutePath markdownFile;
 
     public CodeSampleUpdater(AbsolutePath markdownFile)
     {
-        this.markdownFile = markdownFile ?? throw new System.ArgumentNullException(nameof(markdownFile));
+        this.markdownFile = markdownFile ?? throw new ArgumentNullException(nameof(markdownFile));
     }
 
     public static void Run(AbsolutePath markdownFile)
@@ -143,7 +143,7 @@ internal class CodeSampleUpdater
 
     private string GetLeadingWhitespace(string line)
     {
-        return new string(line.TakeWhile(c => char.IsWhiteSpace(c)).ToArray());
+        return new string(line.TakeWhile(char.IsWhiteSpace).ToArray());
     }
 
     private string GetCommonPrefix(IReadOnlyList<string> lines)
@@ -197,7 +197,7 @@ internal class CodeSampleUpdater
             return CodeEndMarker.Instance;
         }
 
-        var res = Regex.Match(line, "<!--coderef:([^>]*)>");
+        var res = CodeRefBeginRegex().Match(line);
 
         if (res is null)
         {
@@ -213,13 +213,13 @@ internal class CodeSampleUpdater
 
         var details = res.Groups[1].Value;
 
-        if (!details.EndsWith("--"))
+        if (!details.EndsWith("--", StringComparison.Ordinal))
         {
             // invalid ref.
             return null;
         }
 
-        var d = details.Substring(0, details.Length - 2);
+        var d = details[..^2];
         var parts = d.Split('|');
 
         var marker = new CodeStartMarker(parts[0]);
@@ -257,4 +257,7 @@ internal class CodeSampleUpdater
     {
         public static CodeEndMarker Instance { get; } = new CodeEndMarker();
     }
+
+    [GeneratedRegex("<!--coderef:([^>]*)>")]
+    private static partial Regex CodeRefBeginRegex();
 }

@@ -6,6 +6,7 @@ exe
 franzl
 gdi
 gmb
+ints
 ip
 json
 linq
@@ -17,6 +18,7 @@ rgb
 rgba
 streamdeck
 streamdeckmini
+uints
 usb
 util
 utils
