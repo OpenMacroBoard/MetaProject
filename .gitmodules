@@ -10,3 +10,7 @@
 	path = src/StreamDeckSharp
 	url = https://github.com/OpenMacroBoard/StreamDeckSharp.git
 	branch = master
+[submodule "website"]
+	path = website
+	url = https://github.com/OpenMacroBoard/openmacroboard.github.io.git
+	branch = master
