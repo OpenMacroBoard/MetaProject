@@ -55,6 +55,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.Examples.Dev
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.SocketIO", "OpenMacroBoard.SDK\src\OpenMacroBoard.SocketIO\OpenMacroBoard.SocketIO.csproj", "{684B5CAE-C4F9-4492-9C15-3A91DEAD0535}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.SDK.KeyBitmap.GDI", "OpenMacroBoard.SDK\src\OpenMacroBoard.SDK.KeyBitmap.GDI\OpenMacroBoard.SDK.KeyBitmap.GDI.csproj", "{59212812-12D7-4211-BE05-3E4EB3636DB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +153,10 @@ Global
 		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59212812-12D7-4211-BE05-3E4EB3636DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59212812-12D7-4211-BE05-3E4EB3636DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59212812-12D7-4211-BE05-3E4EB3636DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59212812-12D7-4211-BE05-3E4EB3636DB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,6 +183,7 @@ Global
 		{8149FF4F-9954-4925-B913-082132FDF50C} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{0926A1A3-84BE-4256-8E72-6546EDCA8319} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
 		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
+		{59212812-12D7-4211-BE05-3E4EB3636DB8} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EDCF284-B355-487C-810B-97E751930463}

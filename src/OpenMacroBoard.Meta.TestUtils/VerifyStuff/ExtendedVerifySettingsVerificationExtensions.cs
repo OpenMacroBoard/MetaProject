@@ -35,7 +35,9 @@ namespace OpenMacroBoard.Meta.TestUtils
 
         public static SettingsTask VerifyAsync<T>(this ExtendedVerifySettings settings, ValueTask<T> target)
         {
+#pragma warning disable AV1840 // ValueTask should be awaited before assignment
             return Verifier.Verify(target, settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
+#pragma warning restore AV1840
         }
 
         public static SettingsTask VerifyFileAsync(this ExtendedVerifySettings settings, string path)
