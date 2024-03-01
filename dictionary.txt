@@ -2,14 +2,17 @@ bgr
 bgra
 buildtransitive
 contentfiles
+exe
 franzl
 gdi
 gmb
 ip
 json
 linq
+namespaces
 numpad
 openmacroboard
+plugins
 rgb
 rgba
 streamdeck

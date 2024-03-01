@@ -1,27 +1,32 @@
-﻿using System;
+﻿using Nuke.Common.IO;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using static Nuke.Common.IO.PathConstruction;
 
-#nullable enable
+#pragma warning disable S3903 // Types should be defined in named namespaces
 
 /// <summary>
 /// A quick and dirty implementation
 /// </summary>
 /// <remarks>
+/// <para>
 /// This is a quick and dirty tool to update examples in the documentation.
 /// I looked at a bunch of tools, but most of them only work with specific format, are not available
 /// via nuget or are just to complicated for such a simple task.
-/// 
+/// </para>
+/// <para>
 /// The sample updater works by giving it a markdown file (which contains region markers) and copies the referenced
 /// example code into the markdown file. The referenced source also contains region markers.
-/// 
+/// </para>
+/// <para>
 /// Additionally we remove unnecessary indentation to make it more readable.
-/// 
+/// </para>
+/// <para>
 /// The file references inside the markdown file are relative to the markdown file itself.
+/// </para>
 /// </remarks>
 internal class CodeSampleUpdater
 {
@@ -58,7 +63,7 @@ internal class CodeSampleUpdater
                 throw new NotSupportedException("Unexpected end code marker.");
             }
 
-            if (!(lineMarker is CodeStartMarker startMarker))
+            if (lineMarker is not CodeStartMarker startMarker)
             {
                 throw new NotSupportedException("Unknown marker.");
             }
@@ -80,7 +85,7 @@ internal class CodeSampleUpdater
                     return false;
                 }
 
-                if (!(m is CodeStartMarker stC))
+                if (m is not CodeStartMarker stC)
                 {
                     return false;
                 }
@@ -106,7 +111,7 @@ internal class CodeSampleUpdater
             {
                 i++;
             }
-            while (!(GetLineMarker(documentationLines[i]) is CodeEndMarker));
+            while (GetLineMarker(documentationLines[i]) is not CodeEndMarker);
 
             targetDocumentation.Add(documentationLines[i]);
         }
@@ -121,10 +126,19 @@ internal class CodeSampleUpdater
     }
 
 
-    private IReadOnlyList<string> ReduceCodeBlockIndentation(IReadOnlyList<string> codeLines)
+    private List<string> ReduceCodeBlockIndentation(IReadOnlyList<string> codeLines)
     {
-        var prefix = GetCommonPrefix(codeLines.Where(l => !string.IsNullOrWhiteSpace(l)).Select(GetLeadingWhitespace).ToList());
-        return codeLines.Select(l => l.Substring(Math.Min(l.Length, prefix.Length))).ToList();
+        var prefix
+            = GetCommonPrefix(
+                codeLines
+                    .Where(l => !string.IsNullOrWhiteSpace(l))
+                    .Select(GetLeadingWhitespace)
+                    .ToList()
+            );
+
+        return codeLines
+            .Select(l => l[Math.Min(l.Length, prefix.Length)..])
+            .ToList();
     }
 
     private string GetLeadingWhitespace(string line)
@@ -134,10 +148,7 @@ internal class CodeSampleUpdater
 
     private string GetCommonPrefix(IReadOnlyList<string> lines)
     {
-        if (lines is null)
-        {
-            throw new ArgumentNullException(nameof(lines));
-        }
+        ArgumentNullException.ThrowIfNull(lines);
 
         if (lines.Count < 1)
         {
@@ -230,7 +241,7 @@ internal class CodeSampleUpdater
     {
     }
 
-    private class CodeStartMarker : IMarker
+    private sealed class CodeStartMarker : IMarker
     {
         public CodeStartMarker(string snippetName)
         {
@@ -242,9 +253,8 @@ internal class CodeSampleUpdater
         public string? RelativePath { get; set; }
     }
 
-    private class CodeEndMarker : IMarker
+    private sealed class CodeEndMarker : IMarker
     {
         public static CodeEndMarker Instance { get; } = new CodeEndMarker();
     }
 }
-

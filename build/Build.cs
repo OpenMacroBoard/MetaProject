@@ -1,24 +1,19 @@
+using System.Linq;
 using Nuke.Common;
-using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
-using Nuke.Common.Tools.MSBuild;
-using Nuke.Common.Tools.NuGet;
 using Nuke.Common.Utilities.Collections;
-using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
-using System.Linq;
-using System.Xml.Linq;
 
 using static Nuke.Common.IO.FileSystemTasks;
-using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
-[CheckBuildProjectConfigurations]
-[UnsetVisualStudioEnvironmentVariables]
-[SuppressMessage("Code Quality", "IDE0051:Remove unused private members", Justification = "It's OK for build scripts")]
+#pragma warning disable S1144   // Unused private types or members should be removed
+#pragma warning disable S3903   // Types should be defined in named namespaces
+#pragma warning disable IDE0051 // Remove unused private members
+
 class Build : NukeBuild
 {
     public static int Main()
@@ -29,8 +24,10 @@ class Build : NukeBuild
     [Parameter("Configuration to build - Default is 'Release'")]
     readonly Configuration Configuration = Configuration.Release;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     [Solution]
     readonly Solution Solution;
+#pragma warning restore CS8618
 
     AbsolutePath SourceDirectory
         => RootDirectory / "src";
@@ -38,12 +35,12 @@ class Build : NukeBuild
     AbsolutePath OutputDirectory
         => RootDirectory / "output";
 
-    readonly string[] ProjectsNames = new string[]
-    {
+    readonly string[] ProjectsNames =
+    [
         "StreamDeckSharp",
         "OpenMacroBoard.SDK",
         "OpenMacroBoard.SocketIO",
-    };
+    ];
 
     Target UpdateDocs => _ => _
         .Executes(() =>
@@ -54,8 +51,11 @@ class Build : NukeBuild
     Target Clean => _ => _
         .Executes(() =>
         {
-            SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
-            EnsureCleanDirectory(OutputDirectory);
+            SourceDirectory
+                .GlobDirectories("**/bin", "**/obj")
+                .ForEach(x => x.DeleteDirectory());
+
+            OutputDirectory.CreateOrCleanDirectory();
         });
 
     Target Bleach => _ => _
@@ -73,7 +73,7 @@ class Build : NukeBuild
         .After(Clean)
         .Executes(() =>
         {
-            EnsureExistingDirectory(OutputDirectory);
+            OutputDirectory.CreateOrCleanDirectory();
 
             foreach (var projectName in ProjectsNames)
             {
@@ -85,7 +85,7 @@ class Build : NukeBuild
                 );
 
                 var binDir = project.Directory / "bin" / Configuration;
-                var nupkgFile = GlobFiles(binDir, "*.nupkg").Single();
+                var nupkgFile = binDir.GlobFiles("*.nupkg").Single();
 
                 MoveDirectoryToDirectory(
                     nupkgFile,
@@ -103,26 +103,15 @@ class Build : NukeBuild
             );
 
             var releasePath = project2.Directory / "bin" / "Release" / "net6.0-windows";
-            GlobFiles(releasePath, "*.xml", "*.pdb", "*.deps.json").ForEach(DeleteFile);
+
+            releasePath
+                .GlobFiles("*.xml", "*.pdb", "*.deps.json")
+                .ForEach(f => f.DeleteFile());
 
             RenameFile(releasePath / "OpenMacroBoard.VirtualBoard.exe", releasePath / "VirtualBoard.exe");
 
             ZipFile.CreateFromDirectory(releasePath, OutputDirectory / "VirtualBoard.zip");
         });
-
-    private string GetVersion(string project)
-    {
-        return XDocument
-            .Load(project)
-            .Descendants()
-            .Where(d => d.Name.LocalName == "PropertyGroup")
-            .SelectMany(d => d
-                .Descendants()
-                .Where(x => x.Name.LocalName == "Version")
-            )
-            .FirstOrDefault()
-            ?.Value;
-    }
 
     private void RunCodeInRoot(string toolPath, string arguments)
     {
