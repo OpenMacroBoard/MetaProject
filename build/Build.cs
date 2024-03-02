@@ -41,11 +41,12 @@ sealed class Build : NukeBuild
     AbsolutePath WebSiteDirectory
         => RootDirectory / "website";
 
-    readonly string[] ProjectsNames =
+    readonly string[] NuGetPackProjects =
     [
         "StreamDeckSharp",
         "OpenMacroBoard.SDK",
         "OpenMacroBoard.SocketIO",
+        "OpenMacroBoard.SDK.KeyBitmap.GDI"
     ];
 
     Target UpdateDocs => _ => _
@@ -75,9 +76,9 @@ sealed class Build : NukeBuild
         {
             OutputDirectory.CreateOrCleanDirectory();
 
-            foreach (var projectName in ProjectsNames)
+            foreach (var projectName in NuGetPackProjects)
             {
-                var project = Solution.GetProject(projectName);
+                var project = Solution.AllProjects.First(p => p.Name == projectName);
 
                 DotNetPack(s => s
                     .SetProject(project)
