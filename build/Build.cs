@@ -35,6 +35,12 @@ sealed class Build : NukeBuild
     AbsolutePath OutputDirectory
         => RootDirectory / "output";
 
+    AbsolutePath OpenMacroBoardSdkDirectory
+        => SourceDirectory / "OpenMacroBoard.SDK";
+
+    AbsolutePath WebSiteDirectory
+        => RootDirectory / "website";
+
     readonly string[] ProjectsNames =
     [
         "StreamDeckSharp",
@@ -45,7 +51,11 @@ sealed class Build : NukeBuild
     Target UpdateDocs => _ => _
         .Executes(() =>
         {
-            CodeSampleUpdater.Run(RootDirectory / "README.md");
+            var sdkReadme = OpenMacroBoardSdkDirectory / "README.md";
+            var webSiteReadme = WebSiteDirectory / "README.md";
+
+            CodeSampleUpdater.Run(sdkReadme);
+            CopyFile(sdkReadme, webSiteReadme, FileExistsPolicy.Overwrite);
         });
 
     Target Clean => _ => _
