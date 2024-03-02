@@ -68,16 +68,6 @@ sealed class Build : NukeBuild
             OutputDirectory.CreateOrCleanDirectory();
         });
 
-    Target Bleach => _ => _
-        .Before(Clean)
-        .Executes(() =>
-        {
-            RunCodeInRoot("git", "clean -xdf -e /build/bin/ -e /.tmp/build-attempt.log");
-            RunCodeInRoot("git", "reset --hard");
-            RunCodeInRoot("git", "submodule foreach --recursive \"git clean -xdf\"");
-            RunCodeInRoot("git", "submodule foreach --recursive \"git reset --hard\"");
-        });
-
     Target Pack => _ => _
         .Requires(() => Configuration == Configuration.Release)
         .After(Clean)
