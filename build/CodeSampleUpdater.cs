@@ -93,19 +93,18 @@ internal sealed partial class CodeSampleUpdater
                 return stC.SnippetName == startMarker.SnippetName;
             }
 
-            var xxx = ext
+            var codeBlockSourceIndentation = ext
                 .SkipWhile(l => !IsStartMarker(l))
                 .Skip(1)
                 .TakeWhile(l => !IsEndMarker(l))
                 .ToList();
 
-            var fixedXXX = ReduceCodeBlockIndentation(xxx);
+            var codeBlockTargetIndentation = ReduceCodeBlockIndentation(codeBlockSourceIndentation);
 
             targetDocumentation.Add(documentationLines[i]);
             targetDocumentation.Add($"```{startMarker.Language}");
-            targetDocumentation.AddRange(fixedXXX);
+            targetDocumentation.AddRange(codeBlockTargetIndentation);
             targetDocumentation.Add("```");
-
 
             do
             {
