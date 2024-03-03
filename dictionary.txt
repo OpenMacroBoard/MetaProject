@@ -3,11 +3,13 @@ bgra
 buildtransitive
 coderef
 contentfiles
+cornsilk
 csharp
 ctrl
 elgato
 exe
 franzl
+gainsboro
 gdi
 gmb
 ints
@@ -17,6 +19,7 @@ linq
 namespaces
 nuget
 numpad
+omb
 openmacroboard
 plugins
 png
