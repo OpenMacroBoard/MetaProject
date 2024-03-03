@@ -19,6 +19,7 @@ nuget
 numpad
 openmacroboard
 plugins
+png
 rgb
 rgba
 src
