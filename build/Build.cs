@@ -5,9 +5,7 @@ using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities.Collections;
-using System.IO.Compression;
 
-using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using System.Xml.Linq;
 using System.Collections.Generic;
@@ -15,6 +13,7 @@ using System.Collections.Generic;
 #pragma warning disable S1144   // Unused private types or members should be removed
 #pragma warning disable S3903   // Types should be defined in named namespaces
 #pragma warning disable IDE0051 // Remove unused private members
+#pragma warning disable IDE0022 // Use expression body for method
 
 sealed class Build : NukeBuild
 {
@@ -58,7 +57,7 @@ sealed class Build : NukeBuild
             var webSiteReadme = WebSiteDirectory / "README.md";
 
             CodeSampleUpdater.Run(sdkReadme);
-            CopyFile(sdkReadme, webSiteReadme, FileExistsPolicy.Overwrite);
+            sdkReadme.Copy(webSiteReadme, ExistsPolicy.FileOverwrite);
         });
 
     Target Clean => _ => _
@@ -90,12 +89,7 @@ sealed class Build : NukeBuild
                 var binDir = project.Directory / "bin" / Configuration;
                 var nupkgFile = binDir.GlobFiles("*.nupkg").Single();
 
-                MoveDirectoryToDirectory(
-                    nupkgFile,
-                    OutputDirectory,
-                    DirectoryExistsPolicy.Merge,
-                    FileExistsPolicy.Overwrite
-                );
+                nupkgFile.CopyToDirectory(OutputDirectory, ExistsPolicy.MergeAndOverwrite);
             }
 
             var virtualBoardProject = Solution.GetExactProject("OpenMacroBoard.VirtualBoard");
@@ -121,7 +115,8 @@ sealed class Build : NukeBuild
                 "Publish output should only contain a single file at this point"
             );
 
-            CopyFile(releasePath / "OpenMacroBoard.VirtualBoard.exe", OutputDirectory / $"VirtualBoard_{virtualBoardVersion}_x64.exe");
+            var binaryPath = releasePath / "OpenMacroBoard.VirtualBoard.exe";
+            binaryPath.Copy(OutputDirectory / $"VirtualBoard_{virtualBoardVersion}_x64.exe");
         });
 
     private string GetVersion(string project)

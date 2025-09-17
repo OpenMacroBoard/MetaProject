@@ -157,10 +157,16 @@ dotnet_diagnostic.SA1512.severity = none
 # SA1602: Enumeration items should be documented
 dotnet_diagnostic.SA1602.severity = none
 
+
+
+# == Sonar ===
+
 # S2368: Public methods should not have multidimensional array parameters
 dotnet_diagnostic.S2368.severity = none
 
-
+# S3925: "ISerializable" should be implemented correctly
+# Rule still seems to be broken right now: https://github.com/SonarSource/sonar-dotnet/issues/8377
+dotnet_diagnostic.S3925.severity = none
 
 
 
@@ -278,3 +284,12 @@ dotnet_diagnostic.AV1250.severity = none
 
 # AV1535: Missing block in case or default clause of switch statement
 dotnet_diagnostic.AV1535.severity = none
+
+
+
+# == xUNit ==
+
+# xUnit1045: Avoid using TheoryData type arguments that might not be serializable
+# This is only needed to support running single cases in the Visual Studio Runner
+# and not worth the hassle to maintain, so we disable that one.
+dotnet_diagnostic.xUnit1045.severity = none
