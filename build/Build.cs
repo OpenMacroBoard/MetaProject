@@ -93,7 +93,7 @@ sealed class Build : NukeBuild
             }
 
             var virtualBoardProject = Solution.GetExactProject("OpenMacroBoard.VirtualBoard");
-            var releasePath = virtualBoardProject.Directory / "bin" / "Release" / "net6.0-windows" / "win-x64" / "publish";
+            var releasePath = virtualBoardProject.Directory / "bin" / "Release" / "net8.0-windows" / "win-x64" / "publish";
 
             releasePath.DeleteDirectory();
 
