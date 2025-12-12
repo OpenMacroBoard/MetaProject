@@ -57,7 +57,7 @@ namespace OpenMacroBoard.Meta.TestUtils
 
         public static SettingsTask VerifyJsonAsync(this ExtendedVerifySettings settings, JToken target)
         {
-            return Verifier.VerifyJson(target, settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
+            return Verifier.VerifyJson(target.ToString(), settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
         }
 
         public static SettingsTask VerifyJsonAsync(this ExtendedVerifySettings settings, Stream target)
