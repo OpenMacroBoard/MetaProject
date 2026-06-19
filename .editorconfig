@@ -59,7 +59,11 @@ dotnet_diagnostic.IDE0130.severity = none
 # IDE0210: Convert to top-level statements
 csharp_style_prefer_top_level_statements = false
 
+# IDE0290: Use primary constructor
+dotnet_diagnostic.IDE0290.severity = silent
 
+# IDE0305: Simplify collection initialization
+dotnet_diagnostic.IDE0305.severity = suggestion
 
 # == CA ==
 
@@ -293,3 +297,9 @@ dotnet_diagnostic.AV1535.severity = none
 # This is only needed to support running single cases in the Visual Studio Runner
 # and not worth the hassle to maintain, so we disable that one.
 dotnet_diagnostic.xUnit1045.severity = none
+
+# xUnit1050: The class referenced by the ClassData attribute returns untyped data rows
+dotnet_diagnostic.xUnit1050.severity = suggestion
+
+# xUnit1051: Calls to methods which accept CancellationToken should use TestContext.Current.CancellationToken
+dotnet_diagnostic.xUnit1051.severity = suggestion

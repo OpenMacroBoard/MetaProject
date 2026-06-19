@@ -1,14 +1,14 @@
-using System.Linq;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
 
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using System.Xml.Linq;
-using System.Collections.Generic;
 
 #pragma warning disable S1144   // Unused private types or members should be removed
 #pragma warning disable S3903   // Types should be defined in named namespaces
@@ -93,7 +93,7 @@ sealed class Build : NukeBuild
             }
 
             var virtualBoardProject = Solution.GetExactProject("OpenMacroBoard.VirtualBoard");
-            var releasePath = virtualBoardProject.Directory / "bin" / "Release" / "net8.0-windows" / "win-x64" / "publish";
+            var releasePath = virtualBoardProject.Directory / "bin" / "Release" / "net10.0-windows" / "win-x64" / "publish";
 
             releasePath.DeleteDirectory();
 

@@ -11,7 +11,6 @@ namespace OpenMacroBoard.Meta.TestUtils
 
         public string Directory { get; set; }
         public string FileName { get; set; }
-        public string Extension { get; set; }
 
         public bool AutoVerify { get; set; }
 
@@ -26,11 +25,6 @@ namespace OpenMacroBoard.Meta.TestUtils
             else
             {
                 settings.UseFileName(FileName);
-            }
-
-            if (!string.IsNullOrEmpty(Extension))
-            {
-                settings.UseExtension(Extension);
             }
 
             settings.UseDirectory(Directory);

@@ -1,4 +1,3 @@
-using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -19,6 +18,16 @@ namespace OpenMacroBoard.Meta.TestUtils
         }
 
         public static SettingsTask VerifyAsync(this ExtendedVerifySettings settings, Task<byte[]> target)
+        {
+            return Verifier.Verify(target, settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
+        }
+
+        public static SettingsTask VerifyAsync(this ExtendedVerifySettings settings, string target)
+        {
+            return Verifier.Verify(target, settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
+        }
+
+        public static SettingsTask VerifyAsync(this ExtendedVerifySettings settings, Task<string> target)
         {
             return Verifier.Verify(target, settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
         }
@@ -53,21 +62,6 @@ namespace OpenMacroBoard.Meta.TestUtils
         public static SettingsTask VerifyJsonAsync(this ExtendedVerifySettings settings, string target)
         {
             return Verifier.VerifyJson(target, settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
-        }
-
-        public static SettingsTask VerifyJsonAsync(this ExtendedVerifySettings settings, JToken target)
-        {
-            return Verifier.VerifyJson(target.ToString(), settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
-        }
-
-        public static SettingsTask VerifyJsonAsync(this ExtendedVerifySettings settings, Stream target)
-        {
-            return Verifier.VerifyJson(target, settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
-        }
-
-        public static SettingsTask ThrowsAsync(this ExtendedVerifySettings settings, Action target)
-        {
-            return Verifier.Throws(target, settings.BuildVerifySettings(), settings.GetSourceFileOrThrow());
         }
 
         public static SettingsTask ThrowsAsync(this ExtendedVerifySettings settings, Func<object> target)

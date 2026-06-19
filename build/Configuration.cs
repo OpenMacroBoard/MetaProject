@@ -1,5 +1,5 @@
-using System.ComponentModel;
 using Nuke.Common.Tooling;
+using System.ComponentModel;
 
 #pragma warning disable S3903 // Types should be defined in named namespaces
 

@@ -11,7 +11,8 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageTags>streamdeck elgato stream deck open macro board openmacroboard streamdeckmini streamdeckxl mini xl</PackageTags>
+    <PackageTags>streamdeck elgato stream deck open macro board openmacroboard streamdeckmini streamdeckxl mini xl mk2</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
 </Project>

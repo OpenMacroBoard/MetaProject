@@ -68,17 +68,6 @@ namespace OpenMacroBoard.Meta.TestUtils
             return settings.Clone().UseUniqueSuffix(suffix);
         }
 
-        public static ExtendedVerifySettings UseExtension(this ExtendedVerifySettings settings, string extension)
-        {
-            settings.Extension = extension;
-            return settings;
-        }
-
-        public static ExtendedVerifySettings WithExtension(this ExtendedVerifySettings settings, string extension)
-        {
-            return settings.Clone().UseExtension(extension);
-        }
-
         public static ExtendedVerifySettings UseAppendedFolder(this ExtendedVerifySettings settings, string folderName)
         {
             settings.Directory = Path.Combine(settings.Directory, folderName);

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11822.322 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.VirtualBoard", "OpenMacroBoard.SDK\src\OpenMacroBoard.VirtualBoard\OpenMacroBoard.VirtualBoard.csproj", "{15125B47-6DF9-4D4F-AD98-3603EFE741E6}"
 EndProject
@@ -58,6 +58,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMacroBoard.SDK.KeyBitmap.GDI", "OpenMacroBoard.SDK\src\OpenMacroBoard.SDK.KeyBitmap.GDI\OpenMacroBoard.SDK.KeyBitmap.GDI.csproj", "{59212812-12D7-4211-BE05-3E4EB3636DB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMacroBoard.Examples.GettingStarted", "OpenMacroBoard.ExampleCollection\src\OpenMacroBoard.Examples.GettingStarted\OpenMacroBoard.Examples.GettingStarted.csproj", "{051B2E67-2E5E-45C2-AC62-4495737D5627}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMacroBoard.Tests-Win", "OpenMacroBoard.SDK\src\OpenMacroBoard.Tests-Win\OpenMacroBoard.Tests-Win.csproj", "{1EBD13B5-0D61-4327-B338-8A1E1FB78CE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,6 +165,10 @@ Global
 		{051B2E67-2E5E-45C2-AC62-4495737D5627}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{051B2E67-2E5E-45C2-AC62-4495737D5627}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{051B2E67-2E5E-45C2-AC62-4495737D5627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EBD13B5-0D61-4327-B338-8A1E1FB78CE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EBD13B5-0D61-4327-B338-8A1E1FB78CE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EBD13B5-0D61-4327-B338-8A1E1FB78CE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EBD13B5-0D61-4327-B338-8A1E1FB78CE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,6 +197,7 @@ Global
 		{684B5CAE-C4F9-4492-9C15-3A91DEAD0535} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
 		{59212812-12D7-4211-BE05-3E4EB3636DB8} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
 		{051B2E67-2E5E-45C2-AC62-4495737D5627} = {6F1BE9C1-00A0-44D7-A352-EF1E92EA97EE}
+		{1EBD13B5-0D61-4327-B338-8A1E1FB78CE3} = {567FC8FC-DEC9-474F-9F16-49271075AF01}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EDCF284-B355-487C-810B-97E751930463}
