@@ -1,50 +1,49 @@
 using System;
 using VerifyTests;
 
-namespace OpenMacroBoard.Meta.TestUtils
+namespace OpenMacroBoard.Meta.TestUtils;
+
+public class ExtendedVerifySettings : ICloneable
 {
-    public class ExtendedVerifySettings : ICloneable
+    public string CallerFilePath { get; set; }
+    public string CallerMemberName { get; set; }
+    public int CallerLineNumber { get; set; }
+
+    public string Directory { get; set; }
+    public string FileName { get; set; }
+
+    public bool AutoVerify { get; set; }
+
+    public VerifySettings BuildVerifySettings()
     {
-        public string CallerFilePath { get; set; }
-        public string CallerMemberName { get; set; }
-        public int CallerLineNumber { get; set; }
+        var settings = new VerifySettings();
 
-        public string Directory { get; set; }
-        public string FileName { get; set; }
-
-        public bool AutoVerify { get; set; }
-
-        public VerifySettings BuildVerifySettings()
+        if (string.IsNullOrEmpty(FileName))
         {
-            var settings = new VerifySettings();
-
-            if (string.IsNullOrEmpty(FileName))
-            {
-                settings.UseFileName("Snapshot");
-            }
-            else
-            {
-                settings.UseFileName(FileName);
-            }
-
-            settings.UseDirectory(Directory);
-
-            if (AutoVerify)
-            {
-                settings.AutoVerify(false);
-            }
-
-            return settings;
+            settings.UseFileName("Snapshot");
+        }
+        else
+        {
+            settings.UseFileName(FileName);
         }
 
-        object ICloneable.Clone()
+        settings.UseDirectory(Directory);
+
+        if (AutoVerify)
         {
-            return Clone();
+            settings.AutoVerify(false);
         }
 
-        public ExtendedVerifySettings Clone()
-        {
-            return (ExtendedVerifySettings)MemberwiseClone();
-        }
+        return settings;
+    }
+
+    object ICloneable.Clone()
+    {
+        return Clone();
+    }
+
+    public ExtendedVerifySettings Clone()
+    {
+        return (ExtendedVerifySettings)MemberwiseClone();
     }
 }
