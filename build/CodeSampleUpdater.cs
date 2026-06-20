@@ -34,7 +34,8 @@ internal sealed partial class CodeSampleUpdater
 
     public CodeSampleUpdater(AbsolutePath markdownFile)
     {
-        this.markdownFile = markdownFile ?? throw new ArgumentNullException(nameof(markdownFile));
+        ArgumentNullException.ThrowIfNull(markdownFile);
+        this.markdownFile = markdownFile;
     }
 
     public static void Run(AbsolutePath markdownFile)

@@ -13,6 +13,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>streamdeck elgato stream deck open macro board openmacroboard streamdeckmini streamdeckxl mini xl mk2</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
 </Project>
