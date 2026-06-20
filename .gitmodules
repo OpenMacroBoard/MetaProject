@@ -14,3 +14,7 @@
 	path = website
 	url = https://github.com/OpenMacroBoard/openmacroboard.github.io.git
 	branch = master
+[submodule "github"]
+	path = github
+	url = https://github.com/OpenMacroBoard/.github.git
+	branch = main
